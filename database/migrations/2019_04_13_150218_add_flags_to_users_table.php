@@ -13,7 +13,8 @@ class AddFlagsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->boolean('is_manager')->after('remember_token')->default(false);
+            $table->boolean('is_admin')->after('remember_token')->default(false);
         });
     }
 
@@ -25,7 +26,8 @@ class AddFlagsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('is_manager');
+            $table->dropColumn('is_admin');
         });
     }
 }
