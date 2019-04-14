@@ -11,4 +11,11 @@
 |
 */
 
-Route::resource('users', 'UserController');
+Route::group(['prefix' => 'users'], function () {
+    // Route::resource('hello', 'App\Controllers\helloController');
+    Route::get('/','UserController@index');
+    Route::get('new', 'UserController@new');
+    Route::get('confirm', 'UserController@confirm');
+    Route::post('create', 'UserController@create');
+    Route::delete('destroy', 'UserController@destroy');
+});
