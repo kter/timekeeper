@@ -36,7 +36,7 @@ class UserController extends Controller
         $user = new \App\User;
 
         $user->name = $request->name;
-        $user->email = $request->name;
+        $user->email = $request->email;
         $user->is_admin = $request->is_admin;
         $user->is_manager = $request->is_manager;
         $user->save();
