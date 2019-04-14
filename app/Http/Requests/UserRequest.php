@@ -26,9 +26,7 @@ class UserRequest extends Request
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required',
-            'is_admin' => 'required',
-            'is_manager' => 'required'
+            'password' => 'required'
         ];
     }
 

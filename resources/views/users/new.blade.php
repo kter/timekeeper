@@ -20,11 +20,18 @@
                 @if($errors->has('email'))<span class="text-danger">{{ $errors->first('email') }}</span> @endif
             </div>
         </div>
-        <div class="form-group @if($errors->has('tel')) has-error @endif">
-            <label for="tel" class="col-md-3 control-label">電話番号</label>
-            <div class="col-md-9">
-                <input type="tel" class="form-control" id="tel" name="tel">
-                @if($errors->has('tel'))<span class="text-danger">{{ $errors->first('tel') }}</span> @endif
+        <div class="form-group @if($errors->has('is_admin')) has-error @endif">
+            <label for="is_admin" class="col-md-3 control-label">管理者フラグ</label>
+            <div class="col-sm-9">
+                <input type="checkbox" class="form-control" id="is_admin" name="is_admin">
+                @if($errors->has('is_admin'))<span class="text-danger">{{ $errors->first('is_admin') }}</span> @endif
+            </div>
+        </div>
+        <div class="form-group @if($errors->has('is_manager')) has-error @endif">
+            <label for="is_manager" class="col-md-3 control-label">マネージャーフラグ</label>
+            <div class="col-sm-9">
+                <input type="checkbox" class="form-control" id="is_manager" name="is_manager">
+                @if($errors->has('is_manager'))<span class="text-danger">{{ $errors->first('is_manager') }}</span> @endif
             </div>
         </div>
         <div class="col-md-offset-3 text-center"><button class="btn btn-primary">確認</button></div>
