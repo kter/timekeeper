@@ -26,7 +26,8 @@ class UserRequest extends Request
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            // TODO: パスワードを入力させるようにする
+            // 'password' => 'required'
         ];
     }
 
