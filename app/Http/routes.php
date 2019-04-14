@@ -11,10 +11,4 @@
 |
 */
 
-Route::group(['prefix' => 'users'], function () {
-    Route::get('/','UserController@index');
-    Route::get('new', 'UserController@new');
-    Route::get('confirm', 'UserController@confirm');
-    Route::post('create', 'UserController@create');
-    Route::destroy('destroy', 'UserController@destroy');
-});
+Route::resource('users', 'UserController');

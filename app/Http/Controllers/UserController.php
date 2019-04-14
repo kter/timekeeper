@@ -14,4 +14,34 @@ class UserController extends Controller
         $users = $query->orderBy('id', 'desc')->paginate(10);
         return view('users.index')->with('users', $users);
     }
+
+    public function create()
+    {
+        //
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    public function show($message)
+    {
+        //
+    }
+
+    public function edit($message)
+    {
+        //
+    }
+
+    public function update($message)
+    {
+        //
+    }
+
+    public function destroy($message)
+    {
+       //
+    }
 }
