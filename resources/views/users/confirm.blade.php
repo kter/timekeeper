@@ -20,11 +20,19 @@
         </div>
         <div class="row">
             <label class="col-sm-4 control-label">管理者フラグ</label>
-            <div class="col-sm-8">{{$is_admin}}</div>
+            @if ($is_admin)
+                <div class="col-sm-8">ON</div>
+            @else
+                <div class="col-sm-8">OFF</div>
+            @endif
         </div>
         <div class="row">
             <label class="col-sm-4 control-label">マネージャーフラグ</label>
-            <div class="col-sm-8">{{$is_manager}}</div>
+            @if ($is_manager)
+                <div class="col-sm-8">ON</div>
+            @else
+                <div class="col-sm-8">OFF</div>
+            @endif
         </div>
         <div class="row" style="margin-top: 30px;">
             <div class="col-sm-offset-4 col-sm-8">
