@@ -13,7 +13,7 @@ class UserRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,24 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'is_admin' => 'required',
+            'is_manager' => 'required'
+        ];
+    }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'required' => '必須項目です。省略できません。',
+            'email' => 'メールアドレスの形式が不正です。'
         ];
     }
 }
