@@ -21,6 +21,13 @@ class UserController extends Controller
 
     public function confirm(\App\Http\Requests\UserRequest $request){
         $data = $request->all();
+        if (array_key_exists('is_admin', $data) == false){
+            $data['is_admin'] = '';
+        }
+        if (array_key_exists('is_manager', $data) == false){
+            $data['is_manager'] = '';
+        }
+
         return view('users.confirm')->with($data);
     }
 
@@ -30,7 +37,6 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->name;
-        $user->password = $request->password();
         $user->is_admin = $request->is_admin;
         $user->is_manager = $request->is_manager;
         $user->save();
