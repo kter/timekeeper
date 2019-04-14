@@ -4,9 +4,8 @@
     <div class="page-header" style="margin-top:-30px;padding-bottom:0px;">
         <h1><small>社員登録</small></h1>
     </div>
-    <form action="" method="post" class="form-horizontal">
+    <form action="confirm" method="post" class="form-horizontal">
         {{ csrf_field() }}
-        {{ method_field('patch') }}
         <div class="form-group @if($errors->has('name')) has-error @endif">
             <label for="name" class="col-md-3 control-label">お名前</label>
             <div class="col-sm-9">
