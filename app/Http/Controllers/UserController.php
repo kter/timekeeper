@@ -15,9 +15,27 @@ class UserController extends Controller
         return view('users.index')->with('users', $users);
     }
 
-    public function create()
+    public function new(){
+        return view('users.new');
+    }
+
+    public function confirm(\App\Http\Requests\UserRequest $request){
+        $data = $request->all();
+        return view('users.confirm')->with($data);
+    }
+
+    public function create(Request $request)
     {
-        //
+        $user = new \App\User;
+
+        $user->name = $request->name;
+        $user->email = $request->name;
+        $user->password = $request->password();
+        $user->is_admin = $request->is_admin;
+        $user->is_manager = $request->is_manager;
+        $user->save();
+
+        return redirect()->to('users');
     }
 
     public function store()
