@@ -19,3 +19,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::post('create', 'UserController@create');
     Route::delete('destroy', 'UserController@destroy');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
