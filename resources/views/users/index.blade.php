@@ -4,6 +4,7 @@
     <div class="page-header" style="margin-top:-30px;padding-bottom:0px;">
         <h1><small>社員一覧</small></h1>
     </div>
+    <a href="/users/new" class="btn btn-primary btn-sm">新規登録</a>
     <table class="table table-striped table-hover">
         <thead>
         <tr>
