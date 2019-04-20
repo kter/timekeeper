@@ -20,6 +20,6 @@ Route::group(['prefix' => 'users'], function () {
     Route::delete('destroy', 'UserController@destroy');
 });
 
-Route::get('login', 'LoginController@index');
+Route::get('login', 'LoginController@new');
 Route::post('login', 'LoginController@create');
 Route::delete('logout', 'LoginController@destroy');
