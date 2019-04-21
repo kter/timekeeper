@@ -18,6 +18,23 @@
                 <li><a href="#">menuB</a></li>
                 <li><a href="#">menuC</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Authentication Links -->
+                @if (Session::logged_in())
+                    <li><a href="{{ url('/login') }}">Login</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Session::current_user()->name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li method="delete" name="form1" action="logout">
+                                <li><a href="javascript:form1.submit()"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </form>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>
