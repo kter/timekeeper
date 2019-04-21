@@ -13,7 +13,6 @@ class LoginController extends Controller
 {
     public function new()
     {
-        \Log::info('ログ出力テスト');
         return view('login.new');
     }
 
@@ -21,16 +20,49 @@ class LoginController extends Controller
     {
         $user = User::where('email', $request->email)->first();
         if (is_null($user)) {
+            // TODO: throttling
             return view('login.new')->withErrors(array('email' => '存在しないメールアドレスです。'));
         }
+
         if (Hash::check($request->password, $user->password)) {
-            \Log::info('ログ出力テスト');
+            $this->log_in($user);
+            return redirect('/users');
+        } else {
+            return view('login.new')->withErrors(array('password' => 'パスワードが間違えています。'));
         }
     }
 
-    public function destroy($message)
+    public function destroy()
     {
-        //
+        $this->log_out();
+        return redirect('/users');
+    }
+
+    private function log_in(\App\Models\User $user){
+        session()->put('user_id', $user->id);
+    }
+
+    private function log_out(){
+        if (session()->has('user_id')) {
+            session()->forget('user_id');
+        }
+    }
+
+    private function logged_in(){
+        if (session()->has('user_id')) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private function current_user(){
+        if (session()->has('user_id')) {
+            return User::where('id', session('user_id'))->first();
+        } else {
+            return null;
+        }
     }
 }
 
