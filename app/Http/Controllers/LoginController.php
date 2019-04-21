@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Auth2;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,7 @@ class LoginController extends Controller
         }
 
         if (Hash::check($request->password, $user->password)) {
-            $this->log_in($user);
+            Auth2::log_in($user);
             return redirect('/users');
         } else {
             return view('login.new')->withErrors(array('password' => 'パスワードが間違えています。'));
@@ -34,35 +35,8 @@ class LoginController extends Controller
 
     public function destroy()
     {
-        $this->log_out();
+        Auth2::log_out();
         return redirect('/users');
-    }
-
-    private function log_in(\App\Models\User $user){
-        session()->put('user_id', $user->id);
-    }
-
-    private function log_out(){
-        if (session()->has('user_id')) {
-            session()->forget('user_id');
-        }
-    }
-
-    private function logged_in(){
-        if (session()->has('user_id')) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    private function current_user(){
-        if (session()->has('user_id')) {
-            return User::where('id', session('user_id'))->first();
-        } else {
-            return null;
-        }
     }
 }
 

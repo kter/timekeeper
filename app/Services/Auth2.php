@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 
-class Payment {
+class Auth2 {
     public function log_in(\App\Models\User $user){
         session()->put('user_id', $user->id);
     }

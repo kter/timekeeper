@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class SessionServiceProvider extends ServiceProvider
+class Auth2ServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -23,6 +23,6 @@ class SessionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('session', 'App\Services\Session');
+        $this->app->bind('auth2', 'App\Services\Auth2');
     }
 }

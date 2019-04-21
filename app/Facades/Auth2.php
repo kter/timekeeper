@@ -3,8 +3,8 @@ namespace App\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Session extends Facade {
+class Auth2 extends Facade {
     protected static function getFacadeAccessor() {
-        return 'session';
+        return 'auth2';
     }
 }

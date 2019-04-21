@@ -155,7 +155,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\SessionServiceProvider::class,
+        App\Providers\Auth2ServiceProvider::class,
 
     ],
 
@@ -202,7 +202,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Session' => App\Facades\Session::class,
+        'Auth2' => App\Facades\Auth2::class,
 
     ],
 
