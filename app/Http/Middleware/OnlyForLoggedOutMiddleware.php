@@ -15,6 +15,10 @@ class OnlyForLoggedOutMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // TODO: これでいいのかな？
+        if ($request->session()->has('user_id')) {
+            return redirect('home');
+        }
         return $next($request);
     }
 }

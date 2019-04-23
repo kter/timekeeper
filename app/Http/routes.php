@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'users'], function () {
+Route::group(['prefix' => 'users', 'middleware' => 'admin'], function () {
     // Route::resource('hello', 'App\Controllers\helloController');
     Route::get('/','UserController@index');
     Route::get('new', 'UserController@new');
@@ -20,6 +20,6 @@ Route::group(['prefix' => 'users'], function () {
     Route::delete('destroy', 'UserController@destroy');
 });
 
-Route::get('login', 'LoginController@new');
-Route::post('login', 'LoginController@create');
-Route::delete('logout', 'LoginController@destroy');
+Route::get('login', 'LoginController@new')->middleware('logged_out');
+Route::post('login', 'LoginController@create')->middleware('logged_out');
+Route::delete('logout', 'LoginController@destroy')->middleware('logged_in');
