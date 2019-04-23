@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use phpDocumentor\Reflection\Types\Integer;
 
 class Auth2 {
     public function log_in(\App\Models\User $user){
@@ -30,5 +31,14 @@ class Auth2 {
         } else {
             return null;
         }
+    }
+
+    public function is_admin(Integer $user_id){
+        if ($this->logged_in) {
+            if (User::where('id', $user_id)->first()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
