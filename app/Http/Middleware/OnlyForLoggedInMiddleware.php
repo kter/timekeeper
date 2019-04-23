@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Auth2Middleware
+class OnlyForLoggedInMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,6 +15,10 @@ class Auth2Middleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        // TODO: これでいいのかな？
+        if ($request->session()->has('user_id')) {
+            return $next($request);
+        }
+        return redirect('home');
     }
 }
