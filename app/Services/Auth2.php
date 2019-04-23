@@ -33,9 +33,9 @@ class Auth2 {
         }
     }
 
-    public function is_admin(Integer $user_id){
-        if ($this->logged_in) {
-            if (User::where('id', $user_id)->first()) {
+    public function is_admin(){
+        if ($user = self::current_user()){
+            if ($user->is_admin){
                 return true;
             }
         }
