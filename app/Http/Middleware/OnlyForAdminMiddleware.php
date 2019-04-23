@@ -18,7 +18,7 @@ class OnlyForAdminMiddleware
     {
         // TODO: これでいいのかな？
         if ($request->session()->has('user_id')){
-            if (Auth2::is_admin('user_id')){
+            if (Auth2::is_admin()){
                 return $next($request);
             }
         }
