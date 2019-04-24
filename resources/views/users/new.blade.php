@@ -20,6 +20,13 @@
                 @if($errors->has('email'))<span class="text-danger">{{ $errors->first('email') }}</span> @endif
             </div>
         </div>
+        <div class="form-group @if($errors->has('password')) has-error @endif">
+            <label for="email" class="col-md-3 control-label">パスワード</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="email" name="password">
+                @if($errors->has('password'))<span class="text-danger">{{ $errors->first('password') }}</span> @endif
+            </div>
+        </div>
         <div class="form-group @if($errors->has('is_admin')) has-error @endif">
             <label for="is_admin" class="col-md-3 control-label">管理者フラグ</label>
             <div class="col-sm-9">

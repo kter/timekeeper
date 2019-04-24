@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests;
 
@@ -28,6 +29,8 @@ class UserController extends Controller
             $data['is_manager'] = '';
         }
 
+        session()->flash('password', $request->password);
+
         return view('users.confirm')->with($data);
     }
 
@@ -37,6 +40,7 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password = Hash::make(session('password'));
         $user->is_admin = $request->is_admin;
         $user->is_manager = $request->is_manager;
         $user->save();

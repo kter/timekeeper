@@ -19,6 +19,10 @@
             <div class="col-sm-8">{{$email}}</div>
         </div>
         <div class="row">
+            <label class="col-sm-4 control-label">パスワード</label>
+            <div class="col-sm-8">********</div>
+        </div>
+        <div class="row">
             <label class="col-sm-4 control-label">管理者フラグ</label>
             @if ($is_admin)
                 <div class="col-sm-8">ON</div>
