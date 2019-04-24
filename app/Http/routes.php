@@ -23,3 +23,14 @@ Route::group(['prefix' => 'users', 'middleware' => 'admin'], function () {
 Route::get('login', 'LoginController@new')->middleware('logged_out');
 Route::post('login', 'LoginController@create')->middleware('logged_out');
 Route::delete('logout', 'LoginController@destroy')->middleware('logged_in');
+
+Route::group(['prefix' => 'timecards', 'middleware' => 'logged_in'], function () {
+    // 当月一覧表示 / 当日表示
+    Route::get('/','TimecardController@index');
+    // 出勤
+    Route::post('create', 'TimecardController@create');
+    // 退勤
+    Route::patch('update', 'TimecardController@update');
+    // 削除
+    Route::delete('destroy', 'TimecardController@destroy');
+});
